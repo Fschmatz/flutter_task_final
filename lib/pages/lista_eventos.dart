@@ -48,7 +48,7 @@ class _ListaEventosState extends State<ListaEventos> {
   }
 
 
-  void salvarConta() async {
+  void fazerCheckin(int idEvento) async {
     sqfliteFfiInit();
 
     var databaseFactory = databaseFactoryFfi;
@@ -56,10 +56,10 @@ class _ListaEventosState extends State<ListaEventos> {
 
     await db.insert('inscricao', {
     'id_inscricao': getRamdonValue(),
-    'id_usuario': widget.,
-    'id_evento': 1,
-    'checkin': 0,
-    'data': '01/01/1920',
+    'id_usuario': widget.idUsuarioLogado,
+    'id_evento': idEvento,
+    'checkin': 1,
+    'data': '02/12/2021',
     'synced': 0,
     });
   }
@@ -86,9 +86,11 @@ class _ListaEventosState extends State<ListaEventos> {
                     child: SizedBox(
                       height: 120,
                       child: Card(
+                        key: UniqueKey(),
                         margin:  const EdgeInsets.fromLTRB(200, 50, 200, 0),
                        child: InkWell(
                          onTap: (){
+                           fazerCheckin(eventosList[index]['id_evento']);
                            Navigator.of(context).pop();
                          },
                          child: ListTile(

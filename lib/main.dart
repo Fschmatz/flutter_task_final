@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_task_final/pages/criar_conta.dart';
+import 'package:flutter_task_final/pages/dialog_sync_server.dart';
 import 'package:flutter_task_final/pages/lista_eventos.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -218,7 +219,11 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: const Icon(Icons.refresh),
               tooltip: 'Sync DB',
               onPressed: () {
-                // printData();
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return const DialogSyncServer();
+                    });
               },
             ),
           ),

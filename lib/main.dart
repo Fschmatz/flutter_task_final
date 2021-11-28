@@ -47,8 +47,7 @@ Future main() async {
             id_usuario INTEGER NOT NULL,
             id_evento INTEGER NOT NULL,
             checkin INTEGER,
-            data TEXT NOT NULL,
-            synced INTEGER
+            data TEXT NOT NULL
           )
           ''');
 
@@ -82,8 +81,7 @@ Future main() async {
     'id_usuario': 1,
     'id_evento': 1,
     'checkin': 0,
-    'data': '01/01/1920',
-    'synced': 0,
+    'data': '01/01/1920'
   });
 
   await db.insert('inscricao', {
@@ -91,8 +89,7 @@ Future main() async {
     'id_usuario': 1,
     'id_evento': 2,
     'checkin': 0,
-    'data': '01/01/1921',
-    'synced': 0,
+    'data': '01/01/1921'
   });
 
   await db.insert('inscricao', {
@@ -100,9 +97,10 @@ Future main() async {
     'id_usuario': 2,
     'id_evento': 2,
     'checkin': 0,
-    'data': '01/01/1920',
-    'synced': 0,
+    'data': '01/01/1920'
   });
+
+  //     'synced': 0,
 
  /* var resultEV = await db.query('evento');
   print(resultEV);

@@ -59,8 +59,7 @@ class _ListaEventosState extends State<ListaEventos> {
     'id_usuario': widget.idUsuarioLogado,
     'id_evento': idEvento,
     'checkin': 1,
-    'data': '02/12/2021',
-    'synced': 0,
+    'data': '02/12/2021'
     });
   }
 

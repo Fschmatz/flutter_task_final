@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_task_final/pages/criar_conta.dart';
-import 'package:flutter_task_final/pages/dialog_sync_server.dart';
+import 'widgets/dialog_sync_server.dart';
 import 'package:flutter_task_final/pages/lista_eventos.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -46,6 +46,7 @@ Future main() async {
             id_inscricao INTEGER PRIMARY KEY,
             id_usuario INTEGER NOT NULL,
             id_evento INTEGER NOT NULL,
+            cpf_user TEXT NOT NULL,
             checkin INTEGER,
             data TEXT NOT NULL
           )
@@ -80,6 +81,7 @@ Future main() async {
     'id_inscricao': 66,
     'id_usuario': 1,
     'id_evento': 1,
+    'cpf_user ': '191919',
     'checkin': 0,
     'data': '01/01/1920'
   });
@@ -88,6 +90,7 @@ Future main() async {
     'id_inscricao': 67,
     'id_usuario': 1,
     'id_evento': 2,
+    'cpf_user ': '191919',
     'checkin': 0,
     'data': '01/01/1921'
   });
@@ -96,6 +99,7 @@ Future main() async {
     'id_inscricao': 68,
     'id_usuario': 2,
     'id_evento': 2,
+    'cpf_user ': '151515',
     'checkin': 0,
     'data': '01/01/1920'
   });
@@ -185,6 +189,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return idUsuario ?? 0;
   }
 
+  Future<int> getCpf(int idUsuario) async {
+    var databaseFactory = databaseFactoryFfi;
+    var db = await databaseFactory.openDatabase(inMemoryDatabasePath);
+    int? cpf = Sqflite.firstIntValue(await db.rawQuery(
+        'SELECT cpf FROM usuario WHERE id_usuario=$idUsuario'));
+    return cpf ?? 0;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -271,12 +283,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   if (textControllerLogin.text.isNotEmpty && textControllerSenha.text.isNotEmpty) {
                     int user = await login(
                         textControllerLogin.text, textControllerSenha.text);
+                    int cpf = await getCpf(user);
                     if (user != 0) {
                       Navigator.push(
                           context,
                           MaterialPageRoute<void>(
                             builder: (BuildContext context) => ListaEventos(
                               idUsuarioLogado: user,
+                              cpfUsuarioLogado: cpf,
                             ),
                             fullscreenDialog: true,
                           ));

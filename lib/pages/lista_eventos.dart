@@ -7,8 +7,8 @@ import 'package:sqflite_common/sqlite_api.dart';
 class ListaEventos extends StatefulWidget {
 
   int idUsuarioLogado;
-  ListaEventos({Key? key,required this.idUsuarioLogado}) : super(key: key);
-
+  int cpfUsuarioLogado;
+  ListaEventos({Key? key,required this.idUsuarioLogado,required this.cpfUsuarioLogado}) : super(key: key);
 
   @override
   _ListaEventosState createState() => _ListaEventosState();
@@ -58,6 +58,7 @@ class _ListaEventosState extends State<ListaEventos> {
     'id_inscricao': getRamdonValue(),
     'id_usuario': widget.idUsuarioLogado,
     'id_evento': idEvento,
+    'cpf_user': widget.cpfUsuarioLogado,
     'checkin': 1,
     'data': '02/12/2021'
     });

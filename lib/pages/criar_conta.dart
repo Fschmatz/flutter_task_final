@@ -64,83 +64,67 @@ class _CriarContaState extends State<CriarConta> {
           ],
         ),
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(100, 0, 100, 0),
+          padding: const EdgeInsets.fromLTRB(200, 10, 200, 0),
           child: ListView(children: [
 
-            const SizedBox(height: 50,),
-            ListTile(
-              leading: const Icon(Icons.notes_outlined),
-              title: TextField(
-                minLines: 1,
-                controller: textControllerNome,
-                decoration: InputDecoration(
-                  helperText: "NOME",
-                  focusColor: Theme.of(context).accentColor,
-                ),
-                style: const TextStyle(
-                  fontSize: 18,
-
-                ),
+            const SizedBox(height: 30,),
+            TextField(
+              minLines: 1,
+              controller: textControllerNome,
+              decoration: InputDecoration(
+                helperText: "NOME",
+                focusColor: Theme.of(context).accentColor,
+              ),
+              style: const TextStyle(
+                fontSize: 20,
               ),
             ),
-            const SizedBox(height: 50,),
-            ListTile(
-              leading: const Icon(Icons.notes_outlined),
-              title: TextField(
-                minLines: 1,
-                controller: textControllerCpf,
-                decoration: InputDecoration(
-                  helperText: "CPF",
-                  focusColor: Theme.of(context).accentColor,
-                ),
-                style: const TextStyle(
-                  fontSize: 18,
-                ),
+            const SizedBox(height: 30,),
+            TextField(
+              minLines: 1,
+              controller: textControllerCpf,
+              decoration: InputDecoration(
+                helperText: "CPF",
+                focusColor: Theme.of(context).accentColor,
+              ),
+              style: const TextStyle(
+                fontSize: 20,
               ),
             ),
-            const SizedBox(height: 50,),
-            ListTile(
-              leading: const Icon(Icons.notes_outlined),
-              title: TextField(
-                minLines: 1,
-                controller: textControllerEmail,
-                decoration: InputDecoration(
-                  helperText: "EMAIL",
-                  focusColor: Theme.of(context).accentColor,
-                ),
-                style: const TextStyle(
-                  fontSize: 18,
-                ),
+            const SizedBox(height: 30,),
+            TextField(
+              minLines: 1,
+              controller: textControllerEmail,
+              decoration: InputDecoration(
+                helperText: "EMAIL",
+                focusColor: Theme.of(context).accentColor,
+              ),
+              style: const TextStyle(
+                fontSize: 20,
               ),
             ),
-            const SizedBox(height: 50,),
-            ListTile(
-              leading: const Icon(Icons.notes_outlined),
-              title: TextField(
-                minLines: 1,
-                controller: textControllerLogin,
-                decoration: InputDecoration(
-                  helperText: "LOGIN",
-                  focusColor: Theme.of(context).accentColor,
-                ),
-                style: const TextStyle(
-                  fontSize: 18,
-                ),
+            const SizedBox(height: 30,),
+            TextField(
+              minLines: 1,
+              controller: textControllerLogin,
+              decoration: InputDecoration(
+                helperText: "LOGIN",
+                focusColor: Theme.of(context).accentColor,
+              ),
+              style: const TextStyle(
+                fontSize: 20,
               ),
             ),
-            const SizedBox(height: 50,),
-            ListTile(
-              leading: const Icon(Icons.notes_outlined),
-              title: TextField(
-                minLines: 1,
-                controller: textControllerSenha,
-                decoration: InputDecoration(
-                  helperText: "SENHA",
-                  focusColor: Theme.of(context).accentColor,
-                ),
-                style: const TextStyle(
-                  fontSize: 18,
-                ),
+            const SizedBox(height: 30,),
+            TextField(
+              minLines: 1,
+              controller: textControllerSenha,
+              decoration: InputDecoration(
+                helperText: "SENHA",
+                focusColor: Theme.of(context).accentColor,
+              ),
+              style: const TextStyle(
+                fontSize: 20,
               ),
             ),
           const SizedBox(height:100),

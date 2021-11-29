@@ -53,7 +53,7 @@ Future main() async {
           ''');
 
   await db.insert('usuario', {
-    'id_usuario': getRamdonValue(),
+    'id_usuario': 1,
     'nome': 'Fernando',
     'cpf': '191919',
     'email': 'hahahahahahah@eu',
@@ -62,7 +62,7 @@ Future main() async {
   });
 
   await db.insert('usuario', {
-    'id_usuario': getRamdonValue(),
+    'id_usuario': 2,
     'nome': 'Korolev',
     'cpf': '151515',
     'email': 'hahahahahahah@euaaaa.com',
@@ -294,6 +294,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                             fullscreenDialog: true,
                           ));
+                      //LIMPA CAMPOS
+                      textControllerLogin.text = '';
+                      textControllerSenha.text = '';
                     }else{
                       showAlertLogin(context);
                     }

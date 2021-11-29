@@ -49,7 +49,7 @@ class _DialogSyncServerState extends State<DialogSyncServer> {
   void syncUsuarios() async {
     Uri apiUrl = Uri.parse("http://localhost:9091/usuario/syncUser/");
     //ID não importa
-    for (int i = 0; i < usuarioList.length; i++) {
+    for (int i = 2; i < usuarioList.length; i++) {
       final response = await http.post(apiUrl, body: {
         'id_usuario': usuarioList[i]['id_usuario'].toString(),
         'nome': usuarioList[i]['nome'],
@@ -66,7 +66,7 @@ class _DialogSyncServerState extends State<DialogSyncServer> {
     Uri apiUrl =
         Uri.parse("http://localhost:9092/evento/inscricao/syncInscricao/");
 
-    for (int i = 0; i < inscricaoList.length; i++) {
+    for (int i = 3; i < inscricaoList.length; i++) {
       final response = await http.post(apiUrl, body: {
         'id_inscricao': inscricaoList[i]['id_inscricao'].toString(),
         'id_usuario': inscricaoList[i]['id_usuario'].toString(),
@@ -83,7 +83,7 @@ class _DialogSyncServerState extends State<DialogSyncServer> {
     return AlertDialog(
       contentPadding: const EdgeInsets.all(0),
       titlePadding: const EdgeInsets.fromLTRB(16, 25, 0, 24),
-      title: const Text('Sincronizar\n USUARIO PRIMEIRO!!!'),
+      title: const Text('Sincronizar\n\nUSUARIO PRIMEIRO!!!'),
       actions: [
         TextButton(
           child: const Text(

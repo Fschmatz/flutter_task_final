@@ -46,8 +46,8 @@ class _DialogSyncServerState extends State<DialogSyncServer> {
   }
 
   //2 user padrão
-  void syncUsuarios() async {
-    Uri apiUrl = Uri.parse("http://localhost:9091/usuario/syncUser/");
+  void syncUsuarios() async {//9091
+    Uri apiUrl = Uri.parse("http://localhost:9090/usuario/syncUser/");
     //ID não importa
     for (int i = 2; i < usuarioList.length; i++) {
       final response = await http.post(apiUrl, body: {
@@ -62,9 +62,9 @@ class _DialogSyncServerState extends State<DialogSyncServer> {
   }
 
   //3 insc padrao
-  void syncInscricao() async {
+  void syncInscricao() async {//9092
     Uri apiUrl =
-        Uri.parse("http://localhost:9092/evento/inscricao/syncInscricao/");
+        Uri.parse("http://localhost:9090/evento/inscricao/syncInscricao/");
 
     for (int i = 3; i < inscricaoList.length; i++) {
       final response = await http.post(apiUrl, body: {
@@ -96,36 +96,54 @@ class _DialogSyncServerState extends State<DialogSyncServer> {
         )
       ],
       content: SizedBox(
-          height: 100.0,
+          height: 110.0,
           width: 350.0,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(75, 20, 60, 20),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                TextButton(
-                  onPressed: () {
-                    syncUsuarios();
-                  },
-                  child: Column(
-                    children: const <Widget>[
-                      Icon(Icons.people),
-                      Text("Usuarios")
-                    ],
+                SizedBox(
+                  height: 90,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      syncUsuarios();
+                    },
+                    child: Column(
+                      children: const <Widget>[
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: Icon(Icons.people),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                          child: Text("Usuarios"),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(
-                  width: 50,
+                  width: 30,
                 ),
-                TextButton(
-                  onPressed: () {
-                    syncInscricao();
-                  },
-                  child: Column(
-                    children: const <Widget>[
-                      Icon(Icons.notes),
-                      Text("Inscrições")
-                    ],
+                SizedBox(
+                  height: 90,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      syncInscricao();
+                    },
+                    child: Column(
+                      children: const <Widget>[
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: Icon(Icons.notes),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                          child: Text("Inscrições"),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],

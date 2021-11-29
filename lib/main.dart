@@ -106,7 +106,7 @@ Future main() async {
 
   //     'synced': 0,
 
- /* var resultEV = await db.query('evento');
+  /* var resultEV = await db.query('evento');
   print(resultEV);
   var resultUs = await db.query('usuario');
   print(resultUs);
@@ -145,8 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController textControllerLogin = TextEditingController();
   TextEditingController textControllerSenha = TextEditingController();
 
-  showAlertLogin(BuildContext context)
-  {
+  showAlertLogin(BuildContext context) {
     Widget okButton = TextButton(
       child: Text("OK"),
       onPressed: () {
@@ -192,8 +191,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<int> getCpf(int idUsuario) async {
     var databaseFactory = databaseFactoryFfi;
     var db = await databaseFactory.openDatabase(inMemoryDatabasePath);
-    int? cpf = Sqflite.firstIntValue(await db.rawQuery(
-        'SELECT cpf FROM usuario WHERE id_usuario=$idUsuario'));
+    int? cpf = Sqflite.firstIntValue(await db
+        .rawQuery('SELECT cpf FROM usuario WHERE id_usuario=$idUsuario'));
     return cpf ?? 0;
   }
 
@@ -243,87 +242,96 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ListTile(
-              leading: const Icon(Icons.person),
-              contentPadding: const EdgeInsets.fromLTRB(100, 0, 100, 50),
-              title: TextField(
+            Padding(
+              padding: const EdgeInsets.fromLTRB(100, 0, 100, 50),
+              child: TextField(
                 minLines: 1,
                 controller: textControllerLogin,
                 decoration: InputDecoration(
+                  icon: const Icon(Icons.person),
                   focusColor: Theme.of(context).accentColor,
-                  helperText: "* Login",
+                  helperText: "Login",
                 ),
                 style: const TextStyle(
-                  fontSize: 17,
+                  fontSize: 20,
                 ),
               ),
             ),
-            ListTile(
-              contentPadding: const EdgeInsets.fromLTRB(100, 50, 100, 50),
-              leading: const Icon(Icons.password),
-              title: TextField(
+
+            Padding(
+              padding: const EdgeInsets.fromLTRB(100, 0, 100, 50),
+              child: TextField(
                 minLines: 1,
                 controller: textControllerSenha,
                 decoration: InputDecoration(
+                  icon: const Icon(Icons.password),
                   focusColor: Theme.of(context).accentColor,
-                  helperText: "* Senha",
+                  helperText: "Senha",
                 ),
                 style: const TextStyle(
-                  fontSize: 17,
+                  fontSize: 20,
                 ),
               ),
             ),
+
             const SizedBox(
               height: 30,
             ),
 
-            TextButton(
-                onPressed: () async {
-                  //NAO ACEITAR OS CAMPOS VAZIOS
-                  if (textControllerLogin.text.isNotEmpty && textControllerSenha.text.isNotEmpty) {
-                    int user = await login(
-                        textControllerLogin.text, textControllerSenha.text);
-                    int cpf = await getCpf(user);
-                    if (user != 0) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute<void>(
-                            builder: (BuildContext context) => ListaEventos(
-                              idUsuarioLogado: user,
-                              cpfUsuarioLogado: cpf,
-                            ),
-                            fullscreenDialog: true,
-                          ));
-                      //LIMPA CAMPOS
-                      textControllerLogin.text = '';
-                      textControllerSenha.text = '';
-                    }else{
+            SizedBox(
+              height: 50,
+              child: ElevatedButton(
+                  onPressed: () async {
+                    //NAO ACEITAR OS CAMPOS VAZIOS
+                    if (textControllerLogin.text.isNotEmpty &&
+                        textControllerSenha.text.isNotEmpty) {
+                      int user = await login(
+                          textControllerLogin.text, textControllerSenha.text);
+                      int cpf = await getCpf(user);
+                      if (user != 0) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (BuildContext context) => ListaEventos(
+                                idUsuarioLogado: user,
+                                cpfUsuarioLogado: cpf,
+                              ),
+                              fullscreenDialog: true,
+                            ));
+                        //LIMPA CAMPOS
+                        textControllerLogin.text = '';
+                        textControllerSenha.text = '';
+                      } else {
+                        showAlertLogin(context);
+                      }
+                    } else {
                       showAlertLogin(context);
                     }
-                  }else{
-                    showAlertLogin(context);
-                  }
-                },
-                child: const Text(
-                  "LOGIN",
-                  style: TextStyle(fontSize: 20),
-                )),
+                  },
+                  child: const Text(
+                    "LOGIN",
+                    style: TextStyle(fontSize: 20),
+                  )),
+            ),
             const SizedBox(
               height: 50,
             ),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => const CriarConta(),
-                        fullscreenDialog: true,
-                      ));
-                },
-                child: const Text(
-                  "CRIAR CONTA",
-                  style: TextStyle(fontSize: 18),
-                )),
+            SizedBox(
+              height: 50,
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) => const CriarConta(),
+                          fullscreenDialog: true,
+                        ));
+                  },
+                  child: const Text(
+                    "CRIAR CONTA",
+                    style: TextStyle(fontSize: 18),
+                  )),
+            ),
 
             const SizedBox(
               height: 30,

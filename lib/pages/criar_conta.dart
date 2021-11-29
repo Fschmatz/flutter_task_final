@@ -72,6 +72,7 @@ class _CriarContaState extends State<CriarConta> {
               minLines: 1,
               controller: textControllerNome,
               decoration: InputDecoration(
+                icon: const Icon(Icons.notes_outlined),
                 helperText: "NOME",
                 focusColor: Theme.of(context).accentColor,
               ),
@@ -84,6 +85,7 @@ class _CriarContaState extends State<CriarConta> {
               minLines: 1,
               controller: textControllerCpf,
               decoration: InputDecoration(
+                icon: const Icon(Icons.notes_outlined),
                 helperText: "CPF",
                 focusColor: Theme.of(context).accentColor,
               ),
@@ -96,6 +98,7 @@ class _CriarContaState extends State<CriarConta> {
               minLines: 1,
               controller: textControllerEmail,
               decoration: InputDecoration(
+                icon: const Icon(Icons.notes_outlined),
                 helperText: "EMAIL",
                 focusColor: Theme.of(context).accentColor,
               ),
@@ -108,6 +111,7 @@ class _CriarContaState extends State<CriarConta> {
               minLines: 1,
               controller: textControllerLogin,
               decoration: InputDecoration(
+                icon: const Icon(Icons.notes_outlined),
                 helperText: "LOGIN",
                 focusColor: Theme.of(context).accentColor,
               ),
@@ -120,6 +124,7 @@ class _CriarContaState extends State<CriarConta> {
               minLines: 1,
               controller: textControllerSenha,
               decoration: InputDecoration(
+                icon: const Icon(Icons.notes_outlined),
                 helperText: "SENHA",
                 focusColor: Theme.of(context).accentColor,
               ),

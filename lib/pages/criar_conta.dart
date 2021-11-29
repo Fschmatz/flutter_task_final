@@ -54,7 +54,7 @@ class _CriarContaState extends State<CriarConta> {
               padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
               child: IconButton(
                 icon: const Icon(Icons.save_outlined),
-                tooltip: 'Save',
+                tooltip: 'Salvar',
                 onPressed: () {
                   salvarConta();
                   Navigator.of(context).pop();

@@ -83,7 +83,7 @@ class _DialogSyncServerState extends State<DialogSyncServer> {
     return AlertDialog(
       contentPadding: const EdgeInsets.all(0),
       titlePadding: const EdgeInsets.fromLTRB(16, 25, 0, 24),
-      title: const Text('Sincronizar\n\nUSUARIO PRIMEIRO!!!'),
+      title: const Text('Sincronizar'),//\n\nUSUARIO PRIMEIRO!!!
       actions: [
         TextButton(
           child: const Text(

@@ -71,11 +71,11 @@ Future main() async {
   });
 
   await db.insert(
-      'evento', {'id_evento': 1, 'nome': 'Show de Hoje', 'data': '32/13/1920'});
+      'evento', {'id_evento': 1, 'nome': 'Show', 'data': '01/01/2021'});
   await db.insert('evento',
-      {'id_evento': 2, 'nome': 'Show de Amanha', 'data': '33/13/1920'});
+      {'id_evento': 2, 'nome': 'Show 2', 'data': '01/01/2022'});
   await db.insert('evento',
-      {'id_evento': 3, 'nome': 'Show do Futuro', 'data': '33/13/1920'});
+      {'id_evento': 3, 'nome': 'Show 3', 'data': '03/01/2022'});
 
   await db.insert('inscricao', {
     'id_inscricao': 66,
@@ -206,7 +206,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
             child: IconButton(
               icon: const Icon(Icons.notes_outlined),
-              tooltip: 'PRINT INSCRICOES',
+              tooltip: 'Print Lista Inscrições',
               onPressed: () {
                 printData(2);
               },
@@ -216,7 +216,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
             child: IconButton(
               icon: const Icon(Icons.people),
-              tooltip: 'PRINT USUARIOS',
+              tooltip: 'Print Lista Usuarios',
               onPressed: () {
                 printData(1);
               },
@@ -226,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
             child: IconButton(
               icon: const Icon(Icons.refresh),
-              tooltip: 'Sync DB',
+              tooltip: 'Sync Servidor',
               onPressed: () {
                 showDialog(
                     context: context,

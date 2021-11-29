@@ -13,6 +13,7 @@ class DialogSyncServer extends StatefulWidget {
 class _DialogSyncServerState extends State<DialogSyncServer> {
   List<Map<String, dynamic>> usuarioList = [];
   List<Map<String, dynamic>> inscricaoList = [];
+  bool ativarBotao = false;
 
   @override
   void initState() {
@@ -30,7 +31,6 @@ class _DialogSyncServerState extends State<DialogSyncServer> {
     setState(() {
       usuarioList = resp;
     });
-    print(usuarioList.toString());
   }
 
   Future<void> getAllInscricoes() async {
@@ -42,7 +42,6 @@ class _DialogSyncServerState extends State<DialogSyncServer> {
     setState(() {
       inscricaoList = resp;
     });
-    print(inscricaoList.toString());
   }
 
   //2 user padrão
@@ -59,10 +58,14 @@ class _DialogSyncServerState extends State<DialogSyncServer> {
         'senha': usuarioList[i]['senha'],
       });
     }
+    setState(() {
+      ativarBotao = true;
+    });
   }
 
   //3 insc padrao
   void syncInscricao() async {//9092
+
     Uri apiUrl =
         Uri.parse("http://localhost:9090/evento/inscricao/syncInscricao/");
 
@@ -129,9 +132,7 @@ class _DialogSyncServerState extends State<DialogSyncServer> {
                 SizedBox(
                   height: 90,
                   child: ElevatedButton(
-                    onPressed: () {
-                      syncInscricao();
-                    },
+                    onPressed: ativarBotao ? () => syncInscricao() : null,
                     child: Column(
                       children: const <Widget>[
                         Padding(

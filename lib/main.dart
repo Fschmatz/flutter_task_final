@@ -127,7 +127,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Aplicativo Check-in V 0.2.0'),
+      home: const MyHomePage(title: 'Fschmatz Eventos LLC - Aplicativo Check-in'),
     );
   }
 }
@@ -200,7 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Aplicativo Check-in V 0.2.0"),
+        title: const Text("Fschmatz Eventos LLC - Aplicativo Check-in v1.1.0"),
         actions: [
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
